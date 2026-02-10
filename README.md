@@ -129,7 +129,6 @@ For production, set these in your Vercel dashboard.
 - This is a **frontend-only** application with no backend
 - Product data is currently mocked in `src/pages/Products.jsx`
 - Contact form validates client-side and logs to console
-- All Base44 SDK dependencies have been removed
 
 ## 🤝 Contributing
 

@@ -22,7 +22,7 @@ export default function ProductCard({ product, index }) {
             
             {/* Product package */}
             <img
-              src={product.image_url || "https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?w=500&h=500&fit=crop"}
+              src={product.image_url}
               alt={product.name}
               className="relative w-full h-full object-contain drop-shadow-2xl transition-transform duration-700 group-hover:scale-105 group-hover:-rotate-2"
             />

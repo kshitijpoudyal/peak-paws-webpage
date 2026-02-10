@@ -56,7 +56,7 @@ export default function Layout({ children, currentPageName }) {
             <Link to={createPageUrl('Home')} className="flex items-center group">
               <motion.img
                 whileHover={{ scale: 1.05 }}
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/698aa2744336b431ef9e25a3/395cf2f21_logo.png"
+                src="/logo.png"
                 alt="Peak Paws"
                 className="h-14 w-auto"
               />
@@ -178,7 +178,7 @@ export default function Layout({ children, currentPageName }) {
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div className="md:col-span-2">
               <img
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/698aa2744336b431ef9e25a3/395cf2f21_logo.png"
+                src="/logo.png"
                 alt="Peak Paws"
                 className="h-14 w-auto mb-6 brightness-0 invert"
               />
