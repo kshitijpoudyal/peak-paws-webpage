@@ -2,21 +2,21 @@
   {
     "id": 1,
     "name": "Small Size Yak Chew",
-    "description": "Perfect for small dogs up to 15 lbs. 3 sticks per package.",
+    "description": "Perfect for small dogs up to 15 lbs.",
     "image_url": "/products/small.png",
     "amazon_url": "https://www.amazon.com/"
   },
   {
     "id": 2,
     "name": "Medium Size Yak Chew",
-    "description": "Ideal for medium dogs 15-55 lbs. 4 sticks per package.",
+    "description": "Ideal for medium dogs 15-55 lbs.",
     "image_url": "/products/medium.png",
     "amazon_url": "https://www.amazon.com/"
   },
   {
     "id": 3,
     "name": "Large Size Yak Chew",
-    "description": "Great for large dogs 55+ lbs. 3 large sticks per package.",
+    "description": "Great for large dogs 55+ lbs.",
     "image_url": "/products/large.png",
     "amazon_url": "https://www.amazon.com/"
   }

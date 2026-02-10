@@ -1,14 +1,14 @@
 [
   {
-    "url": "/public/customer/image_1.jpg",
+    "url": "/customer/image_1.jpg",
     "alt": "Excited dog with chew"
   },
   {
-    "url": "/public/customer/image_2.jpg",
+    "url": "/customer/image_2.jpg",
     "alt": "Dog with Peak Paws product"
   },
   {
-    "url": "/public/customer/image_3.jpg",
+    "url": "/customer/image_3.jpg",
     "alt": "Happy dog enjoying Himalayan chew"
   }
 ]
