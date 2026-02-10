@@ -42,7 +42,7 @@ export default function ProductCard({ product, index }) {
           
           <Button
             asChild
-            className="w-full bg-gradient-to-r from-sky-600 to-blue-700 hover:from-sky-700 hover:to-blue-800 text-white rounded-2xl py-6 shadow-lg shadow-sky-900/20 group/btn"
+            className="w-full bg-[#F9A93A] hover:bg-[#e89820] text-white rounded-2xl py-6 shadow-lg shadow-amber-900/20 group/btn"
           >
             <a 
               href={product.amazon_url || "https://amazon.com"} 

@@ -92,7 +92,7 @@ export default function Layout({ children, currentPageName }) {
             <div className="hidden md:block">
               <Button
                 asChild
-                className="bg-gradient-to-r from-sky-600 to-blue-700 hover:from-sky-700 hover:to-blue-800 text-white rounded-full px-6 shadow-lg shadow-sky-900/20"
+                className="bg-[#F9A93A] hover:bg-[#e89820] text-white rounded-full px-6 shadow-lg shadow-amber-900/20"
               >
                 <a href="https://amazon.com" target="_blank" rel="noopener noreferrer">
                   <ShoppingBag className="w-4 h-4 mr-2" />
@@ -147,7 +147,7 @@ export default function Layout({ children, currentPageName }) {
                 ))}
                 <Button
                   asChild
-                  className="w-full bg-gradient-to-r from-sky-600 to-blue-700 text-white rounded-full mt-4"
+                  className="w-full bg-[#F9A93A] hover:bg-[#e89820] text-white rounded-full mt-4"
                 >
                   <a href="https://amazon.com" target="_blank" rel="noopener noreferrer">
                     <ShoppingBag className="w-4 h-4 mr-2" />

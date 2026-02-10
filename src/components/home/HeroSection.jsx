@@ -74,7 +74,7 @@ export default function HeroSection() {
             </h1>
             
             <p className="text-xl text-slate-600 mb-10 leading-relaxed max-w-xl">
-              Authentic Himalayan Yak cheese chews crafted using ancient recipes. 
+              Authentic Himalayan yak cheese chews crafted using ancient recipes. 
               100% natural, grain-free, and packed with protein for endless tail wags.
             </p>
             
@@ -82,7 +82,7 @@ export default function HeroSection() {
               <Button 
                 asChild
                 size="lg"
-                className="bg-gradient-to-r from-sky-600 to-blue-700 hover:from-sky-700 hover:to-blue-800 text-white rounded-full px-10 py-7 text-lg shadow-2xl shadow-sky-900/30 group"
+                className="bg-[#F9A93A] hover:bg-[#e89820] text-white rounded-full px-10 py-7 text-lg shadow-2xl shadow-amber-900/30 group"
               >
                 <a href="https://amazon.com" target="_blank" rel="noopener noreferrer">
                   <ShoppingBag className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
@@ -162,8 +162,8 @@ export default function HeroSection() {
               <div className="relative rounded-[4rem] overflow-hidden shadow-2xl shadow-sky-900/30">
                 <div className="absolute inset-0 bg-gradient-to-br from-sky-400/20 to-orange-400/20 mix-blend-overlay" />
                 <img
-                  src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=700&h=800&fit=crop"
-                  alt="Happy dog with chew"
+                  src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=700&h=800&fit=crop"
+                  alt="Dog in the mountains"
                   className="w-full h-[700px] object-cover"
                 />
               </div>
