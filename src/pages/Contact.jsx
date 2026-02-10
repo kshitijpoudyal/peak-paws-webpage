@@ -7,7 +7,7 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email Us",
-    description: "hello@peakpaws.com",
+    description: "support@peakpawschew.com",
     subtext: "We'll respond within 24 hours",
     gradient: "from-sky-400 to-blue-500"
   },
@@ -29,57 +29,77 @@ const contactInfo = [
 
 export default function Contact() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sky-50 via-white to-orange-50">
-      {/* Header */}
-      <section className="relative py-32 overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03]">
-          <div className="absolute top-10 right-10 text-9xl rotate-12">🐾</div>
-          <div className="absolute bottom-10 left-10 text-9xl -rotate-12">🐾</div>
+    <div className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <section className="relative py-24 lg:py-32 overflow-hidden bg-gradient-to-br from-slate-50 via-sky-50/30 to-white">
+        {/* Mountain backdrop */}
+        <div className="absolute inset-0 opacity-[0.04]">
+          <svg className="absolute bottom-0 w-full h-64" viewBox="0 0 1440 300" preserveAspectRatio="none">
+            <path fill="#0c4a6e" d="M0,300 L0,150 L200,100 L400,170 L600,80 L800,150 L1000,60 L1200,130 L1440,70 L1440,300 Z"/>
+            <path fill="#075985" d="M0,300 L0,200 L150,160 L300,220 L450,140 L600,200 L750,120 L900,180 L1050,100 L1200,160 L1350,80 L1440,140 L1440,300 Z" opacity="0.6"/>
+          </svg>
         </div>
-        
+
+        {/* Floating mountains */}
+        <div className="absolute top-20 right-10 text-7xl opacity-[0.03]">🏔️</div>
+        <div className="absolute bottom-20 left-10 text-6xl opacity-[0.02]">⛰️</div>
+
         <div className="container mx-auto px-6 lg:px-12 relative">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center"
+            className="max-w-3xl"
           >
-            <div className="inline-flex items-center gap-2 px-5 py-2 bg-white/80 backdrop-blur rounded-full mb-8 shadow-lg">
-              <Sparkles className="w-4 h-4 text-sky-600" />
-              <span className="text-sm font-semibold text-sky-900">Get In Touch</span>
+            <div className="text-sm font-bold text-sky-700 tracking-widest mb-4 flex items-center gap-2">
+              <Mail className="w-4 h-4" />
+              <span>GET IN TOUCH</span>
             </div>
-            <h1 className="text-5xl md:text-6xl font-extrabold mb-6">
-              <span className="bg-gradient-to-r from-sky-700 to-blue-700 bg-clip-text text-transparent">
-                We'd Love to
-              </span>
-              <br />
-              <span className="text-slate-900">Hear From You</span>
+            <h1 className="text-5xl lg:text-7xl font-black text-slate-900 mb-6 leading-tight">
+              Let's Talk<br />
+              <span className="text-sky-600">About Your Pup</span>
             </h1>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
-              Have a question about our products or need help with an order? 
-              Drop us a message and we'll get back to you soon.
+            <p className="text-xl text-slate-600 max-w-xl leading-relaxed">
+              Questions about our Himalayan chews? We're here to help you find the perfect treat for your furry friend.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="pb-24">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid lg:grid-cols-5 gap-12">
-            {/* Contact Info */}
+      {/* Contact Content */}
+      <section className="py-20 lg:py-32 relative overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 opacity-[0.08]">
+          <img
+            src="https://images.unsplash.com/photo-1534361960057-19889db9621e?w=1200&h=800&fit=crop"
+            alt="Happy dog"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-white via-white/95 to-white/90" />
+        </div>
+
+        <div className="container mx-auto px-6 lg:px-12 relative">
+          <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 max-w-7xl mx-auto">
+            {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2 }}
-              className="lg:col-span-2 space-y-8"
+            >
+              <h2 className="text-3xl font-bold text-slate-900 mb-8">Send Us a Message</h2>
+              <ContactForm />
+            </motion.div>
+
+            {/* Contact Info */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.3 }}
+              className="space-y-10"
             >
               <div>
-                <h2 className="text-3xl font-bold text-slate-900 mb-4">
-                  Contact Information
-                </h2>
-                <p className="text-lg text-slate-600">
-                  Reach out to us through the form or contact us directly. 
-                  We're here to help!
+                <h2 className="text-3xl font-bold text-slate-900 mb-6">Contact Info</h2>
+                <p className="text-lg text-slate-600 leading-relaxed">
+                  We're passionate about providing the best natural treats for dogs. Reach out anytime!
                 </p>
               </div>
 
@@ -89,44 +109,21 @@ export default function Contact() {
                     key={item.title}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 + index * 0.1 }}
-                    whileHover={{ x: 8 }}
-                    className="flex gap-5 p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-slate-100"
+                    transition={{ delay: 0.4 + index * 0.1 }}
+                    className="flex gap-4"
                   >
-                    <div className={`w-14 h-14 bg-gradient-to-br ${item.gradient} rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg`}>
-                      <item.icon className="w-7 h-7 text-white" strokeWidth={2.5} />
+                    <div className={`w-12 h-12 bg-gradient-to-br ${item.gradient} rounded-xl flex items-center justify-center flex-shrink-0`}>
+                      <item.icon className="w-6 h-6 text-white" strokeWidth={2.5} />
                     </div>
                     <div>
-                      <h3 className="font-bold text-slate-900 text-lg mb-1">{item.title}</h3>
+                      <h3 className="font-bold text-slate-900 mb-1">{item.title}</h3>
                       <p className="text-slate-700 font-medium">{item.description}</p>
-                      <p className="text-sm text-slate-500 mt-1">{item.subtext}</p>
+                      <p className="text-sm text-slate-500">{item.subtext}</p>
                     </div>
                   </motion.div>
                 ))}
               </div>
-
-              {/* Decorative Image */}
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.6 }}
-                className="hidden lg:block"
-              >
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-br from-sky-600/10 to-orange-600/10 mix-blend-overlay" />
-                  <img
-                    src="https://images.unsplash.com/photo-1534361960057-19889db9621e?w=500&h=350&fit=crop"
-                    alt="Happy dog"
-                    className="w-full h-[350px] object-cover"
-                  />
-                </div>
-              </motion.div>
             </motion.div>
-
-            {/* Contact Form */}
-            <div className="lg:col-span-3">
-              <ContactForm />
-            </div>
           </div>
         </div>
       </section>
