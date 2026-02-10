@@ -15,7 +15,7 @@ const contactInfo = [
     icon: Clock,
     title: "Business Hours",
     description: "Mon - Fri: 9am - 5pm",
-    subtext: "Pacific Time (PT)",
+    subtext: "Eastern Standard Time (EST)",
     gradient: "from-emerald-400 to-teal-500"
   },
   {
