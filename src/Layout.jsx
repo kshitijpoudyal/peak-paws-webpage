@@ -14,47 +14,85 @@ const navLinks = [
 
 export default function Layout({ children, currentPageName }) {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const [scrolled, setScrolled] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <div className="min-h-screen bg-stone-50 flex flex-col">
+    <div className="min-h-screen bg-gradient-to-br from-sky-50 via-white to-orange-50">
+      {/* Floating paw prints background */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden opacity-[0.03]">
+        {[...Array(15)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute text-6xl"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              transform: `rotate(${Math.random() * 360}deg)`,
+            }}
+          >
+            🐾
+          </div>
+        ))}
+      </div>
+
       {/* Navigation */}
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-stone-100">
+      <motion.header
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        className={`sticky top-0 z-50 transition-all duration-300 ${
+          scrolled 
+            ? 'bg-white/95 backdrop-blur-xl shadow-lg shadow-sky-900/5' 
+            : 'bg-transparent'
+        }`}
+      >
         <div className="container mx-auto px-6 lg:px-12">
           <nav className="flex items-center justify-between h-20">
-            {/* Logo */}
-            <Link 
-              to={createPageUrl('Home')} 
-              className="flex items-center"
-            >
-              <img 
-                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/698aa2744336b431ef9e25a3/395cf2f21_logo.png" 
-                alt="Peak Paws" 
-                className="h-12 w-auto"
+            <Link to={createPageUrl('Home')} className="flex items-center group">
+              <motion.img
+                whileHover={{ scale: 1.05 }}
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/698aa2744336b431ef9e25a3/395cf2f21_logo.png"
+                alt="Peak Paws"
+                className="h-14 w-auto"
               />
             </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            {/* Desktop Nav */}
+            <div className="hidden md:flex items-center gap-2">
               {navLinks.map((link) => (
-                <Link
-                  key={link.page}
-                  to={createPageUrl(link.page)}
-                  className={`text-sm font-medium transition-colors ${
-                    currentPageName === link.page
-                      ? 'text-brand-brown'
-                      : 'text-stone-600 hover:text-brand-brown'
-                  }`}
-                >
-                  {link.name}
-                </Link>
+                link.section ? (
+                  <a
+                    key={link.name}
+                    href={`${createPageUrl(link.page)}#${link.section}`}
+                    className="px-4 py-2 text-sm font-medium text-slate-700 hover:text-sky-700 transition-colors rounded-lg hover:bg-sky-50"
+                  >
+                    {link.name}
+                  </a>
+                ) : (
+                  <Link
+                    key={link.page}
+                    to={createPageUrl(link.page)}
+                    className={`px-4 py-2 text-sm font-medium transition-colors rounded-lg ${
+                      currentPageName === link.page
+                        ? 'text-sky-700 bg-sky-50'
+                        : 'text-slate-700 hover:text-sky-700 hover:bg-sky-50'
+                    }`}
+                  >
+                    {link.name}
+                  </Link>
+                )
               ))}
             </div>
 
-            {/* CTA Button */}
             <div className="hidden md:block">
               <Button
                 asChild
-                className="bg-brand-orange hover:bg-brand-dark-brown text-white rounded-full px-6"
+                className="bg-gradient-to-r from-sky-600 to-blue-700 hover:from-sky-700 hover:to-blue-800 text-white rounded-full px-6 shadow-lg shadow-sky-900/20"
               >
                 <a href="https://amazon.com" target="_blank" rel="noopener noreferrer">
                   <ShoppingBag className="w-4 h-4 mr-2" />
@@ -63,10 +101,9 @@ export default function Layout({ children, currentPageName }) {
               </Button>
             </div>
 
-            {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-stone-600"
+              className="md:hidden p-2 text-slate-700 hover:bg-slate-100 rounded-lg"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -80,26 +117,37 @@ export default function Layout({ children, currentPageName }) {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden bg-white border-t border-stone-100"
+              className="md:hidden bg-white border-t border-slate-100"
             >
-              <div className="container mx-auto px-6 py-6 space-y-4">
+              <div className="container mx-auto px-6 py-6 space-y-2">
                 {navLinks.map((link) => (
-                  <Link
-                    key={link.page}
-                    to={createPageUrl(link.page)}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className={`block py-2 text-lg font-medium ${
-                      currentPageName === link.page
-                        ? 'text-brand-brown'
-                        : 'text-stone-600'
-                    }`}
-                  >
-                    {link.name}
-                  </Link>
+                  link.section ? (
+                    <a
+                      key={link.name}
+                      href={`${createPageUrl(link.page)}#${link.section}`}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block py-3 px-4 text-lg font-medium text-slate-700 rounded-lg hover:bg-sky-50"
+                    >
+                      {link.name}
+                    </a>
+                  ) : (
+                    <Link
+                      key={link.page}
+                      to={createPageUrl(link.page)}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className={`block py-3 px-4 text-lg font-medium rounded-lg ${
+                        currentPageName === link.page
+                          ? 'text-sky-700 bg-sky-50'
+                          : 'text-slate-700 hover:bg-sky-50'
+                      }`}
+                    >
+                      {link.name}
+                    </Link>
+                  )
                 ))}
                 <Button
                   asChild
-                  className="w-full bg-brand-orange hover:bg-brand-dark-brown text-white rounded-full mt-4"
+                  className="w-full bg-gradient-to-r from-sky-600 to-blue-700 text-white rounded-full mt-4"
                 >
                   <a href="https://amazon.com" target="_blank" rel="noopener noreferrer">
                     <ShoppingBag className="w-4 h-4 mr-2" />
@@ -110,45 +158,50 @@ export default function Layout({ children, currentPageName }) {
             </motion.div>
           )}
         </AnimatePresence>
-      </header>
+      </motion.header>
 
       {/* Main Content */}
-      <main className="flex-1">
+      <main className="relative">
         {children}
       </main>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-b from-slate-700 to-slate-800 text-white py-16 relative overflow-hidden">
+      <footer className="relative bg-gradient-to-br from-slate-900 via-sky-950 to-blue-950 text-white py-20 overflow-hidden">
         {/* Mountain silhouette */}
-        <svg className="absolute top-0 left-0 w-full h-20 opacity-10" viewBox="0 0 1440 80" preserveAspectRatio="none">
-          <path fill="#fff" d="M0,0 L0,50 L120,40 L240,60 L360,30 L480,55 L600,25 L720,45 L840,15 L960,40 L1080,10 L1200,35 L1320,5 L1440,30 L1440,0 Z"/>
-        </svg>
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid md:grid-cols-4 gap-12">
-            {/* Brand */}
+        <div className="absolute inset-0 opacity-10">
+          <svg className="absolute bottom-0 w-full h-64" viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path fill="currentColor" d="M0,320L0,240L80,200L160,280L240,160L320,220L400,120L480,200L560,80L640,160L720,40L800,120L880,20L960,100L1040,0L1120,80L1200,10L1280,60L1360,30L1440,80L1440,320L0,320Z"/>
+          </svg>
+        </div>
+        
+        <div className="container mx-auto px-6 lg:px-12 relative">
+          <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div className="md:col-span-2">
-              <div className="flex items-center mb-4">
-                <img 
-                  src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/698aa2744336b431ef9e25a3/395cf2f21_logo.png" 
-                  alt="Peak Paws" 
-                  className="h-12 w-auto brightness-0 invert"
-                />
-              </div>
-              <p className="text-stone-400 max-w-sm">
+              <img
+                src="https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/698aa2744336b431ef9e25a3/395cf2f21_logo.png"
+                alt="Peak Paws"
+                className="h-14 w-auto mb-6 brightness-0 invert"
+              />
+              <p className="text-sky-100 max-w-sm leading-relaxed mb-6">
                 Authentic Himalayan yak cheese chews - 100% natural, grain-free, 
                 and packed with protein for hours of healthy chewing.
               </p>
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-sky-400/20 backdrop-blur rounded-full flex items-center justify-center">
+                  <span className="text-xl">🏔️</span>
+                </div>
+                <span className="text-sm text-sky-200">Crafted in the Himalayas</span>
+              </div>
             </div>
 
-            {/* Quick Links */}
             <div>
-              <h4 className="font-semibold mb-4">Quick Links</h4>
+              <h4 className="font-semibold text-white mb-4">Quick Links</h4>
               <ul className="space-y-2">
                 {navLinks.map((link) => (
                   <li key={link.page}>
                     <Link
                       to={createPageUrl(link.page)}
-                      className="text-stone-400 hover:text-white transition-colors"
+                      className="text-sky-200 hover:text-white transition-colors text-sm"
                     >
                       {link.name}
                     </Link>
@@ -157,31 +210,28 @@ export default function Layout({ children, currentPageName }) {
               </ul>
             </div>
 
-            {/* Shop */}
             <div>
-              <h4 className="font-semibold mb-4">Shop</h4>
-              <ul className="space-y-2">
-                <li>
-                  <a
-                    href="https://amazon.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-stone-400 hover:text-white transition-colors"
-                  >
-                    Amazon Store
-                  </a>
-                </li>
-              </ul>
+              <h4 className="font-semibold text-white mb-4">Shop</h4>
+              <a
+                href="https://amazon.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sky-200 hover:text-white transition-colors text-sm"
+              >
+                <ShoppingBag className="w-4 h-4" />
+                Amazon Store
+              </a>
             </div>
           </div>
 
-          <div className="border-t border-stone-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-stone-500 text-sm">
+          <div className="border-t border-sky-800/50 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-sky-300 text-sm">
               © {new Date().getFullYear()} Peak Paws. All rights reserved.
             </p>
-            <p className="text-stone-500 text-sm">
-              Authentic Himalayan Dog Chews 🏔️
-            </p>
+            <div className="flex items-center gap-2 text-sky-200 text-sm">
+              <span className="text-lg">🐾</span>
+              <span>Made with love for your furry friends</span>
+            </div>
           </div>
         </div>
       </footer>

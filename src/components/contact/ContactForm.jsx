@@ -14,58 +14,35 @@ export default function ContactForm() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [errors, setErrors] = useState({});
-
-  const validateForm = () => {
-    const newErrors = {};
-    if (!formData.name.trim()) newErrors.name = 'Name is required';
-    if (!formData.email.trim()) newErrors.email = 'Email is required';
-    else if (!/\S+@\S+\.\S+/.test(formData.email)) newErrors.email = 'Email is invalid';
-    if (!formData.message.trim()) newErrors.message = 'Message is required';
-    return newErrors;
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-    const newErrors = validateForm();
-    if (Object.keys(newErrors).length > 0) {
-      setErrors(newErrors);
-      return;
-    }
-    
     setIsSubmitting(true);
-    
-    // Simulate form submission delay
-    setTimeout(() => {
-      console.log('Form submitted:', formData);
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      setFormData({ name: '', email: '', message: '' });
-      setErrors({});
-    }, 1000);
+    //TODO call backend API to send email
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+    setFormData({ name: '', email: '', message: '' });
   };
 
   if (isSubmitted) {
     return (
       <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
+        initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="bg-emerald-50 rounded-3xl p-12 text-center"
+        className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-[2.5rem] p-16 text-center shadow-xl border border-emerald-100"
       >
-        <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
-          <CheckCircle className="w-8 h-8 text-emerald-600" />
+        <div className="w-20 h-20 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-full flex items-center justify-center mx-auto mb-8 shadow-lg">
+          <CheckCircle className="w-10 h-10 text-white" strokeWidth={2.5} />
         </div>
-        <h3 className="text-2xl font-bold text-stone-800 mb-3">
+        <h3 className="text-3xl font-extrabold text-slate-900 mb-4">
           Message Sent!
         </h3>
-        <p className="text-stone-600 mb-6">
+        <p className="text-lg text-slate-600 mb-8">
           Thank you for reaching out. We'll get back to you within 24-48 hours.
         </p>
         <Button
           onClick={() => setIsSubmitted(false)}
-          variant="outline"
-          className="rounded-full"
+          className="bg-gradient-to-r from-sky-600 to-blue-700 hover:from-sky-700 hover:to-blue-800 text-white rounded-full px-8 py-6 shadow-lg"
         >
           Send Another Message
         </Button>
@@ -75,70 +52,61 @@ export default function ContactForm() {
 
   return (
     <motion.form
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       onSubmit={handleSubmit}
-      className="bg-white rounded-3xl p-8 md:p-10 shadow-sm"
+      className="bg-white rounded-[2.5rem] p-10 md:p-12 shadow-xl border border-slate-100"
     >
-      <div className="space-y-6">
+      <div className="space-y-7">
         <div>
-          <Label htmlFor="name" className="text-stone-700 font-medium">
+          <Label htmlFor="name" className="text-slate-700 font-semibold text-lg mb-3 block">
             Your Name
           </Label>
           <Input
             id="name"
             type="text"
+            required
             value={formData.name}
-            onChange={(e) => {
-              setFormData({ ...formData, name: e.target.value });
-              if (errors.name) setErrors({ ...errors, name: '' });
-            }}
-            className={`mt-2 rounded-xl border-stone-200 focus:border-amber-500 focus:ring-amber-500 ${errors.name ? 'border-red-500' : ''}`}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            className="rounded-2xl border-2 border-slate-200 focus:border-sky-500 focus:ring-sky-500 py-6 px-5 text-lg"
             placeholder="John Doe"
           />
-          {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
         </div>
         
         <div>
-          <Label htmlFor="email" className="text-stone-700 font-medium">
+          <Label htmlFor="email" className="text-slate-700 font-semibold text-lg mb-3 block">
             Email Address
           </Label>
           <Input
             id="email"
             type="email"
+            required
             value={formData.email}
-            onChange={(e) => {
-              setFormData({ ...formData, email: e.target.value });
-              if (errors.email) setErrors({ ...errors, email: '' });
-            }}
-            className={`mt-2 rounded-xl border-stone-200 focus:border-amber-500 focus:ring-amber-500 ${errors.email ? 'border-red-500' : ''}`}
+            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            className="rounded-2xl border-2 border-slate-200 focus:border-sky-500 focus:ring-sky-500 py-6 px-5 text-lg"
             placeholder="john@example.com"
           />
-          {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
         </div>
         
         <div>
-          <Label htmlFor="message" className="text-stone-700 font-medium">
+          <Label htmlFor="message" className="text-slate-700 font-semibold text-lg mb-3 block">
             Your Message
           </Label>
           <Textarea
             id="message"
-            rows={5}
+            required
+            rows={6}
             value={formData.message}
-            onChange={(e) => {
-              setFormData({ ...formData, message: e.target.value });
-              if (errors.message) setErrors({ ...errors, message: '' });
-            }}
-            className={`mt-2 rounded-xl border-stone-200 focus:border-amber-500 focus:ring-amber-500 resize-none ${errors.message ? 'border-red-500' : ''}`}
+            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+            className="rounded-2xl border-2 border-slate-200 focus:border-sky-500 focus:ring-sky-500 resize-none p-5 text-lg"
             placeholder="How can we help you?"
           />
-          {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
         </div>
         
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-amber-600 hover:bg-amber-700 text-white rounded-xl py-6 text-lg font-semibold"
+          className="w-full bg-gradient-to-r from-sky-600 to-blue-700 hover:from-sky-700 hover:to-blue-800 text-white rounded-2xl py-7 text-lg font-bold shadow-xl shadow-sky-900/20"
         >
           {isSubmitting ? (
             <>

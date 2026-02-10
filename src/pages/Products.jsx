@@ -3,71 +3,41 @@ import { useQuery } from '@tanstack/react-query';
 import { motion } from 'framer-motion';
 import { Loader2 } from 'lucide-react';
 import ProductCard from '@/components/products/ProductCard';
-
-// Mock product data - replace with your actual products
-const MOCK_PRODUCTS = [
-  {
-    id: 1,
-    name: 'Classic Yak Cheese Chew',
-    description: 'Our signature all-natural yak cheese chew. Long-lasting and delicious.',
-    price: 12.99,
-    image: 'https://images.unsplash.com/photo-1601758228658-3bde5a7230b9?w=500&h=400&fit=crop',
-    rating: 4.8,
-    reviews: 124
-  },
-  {
-    id: 2,
-    name: 'Himalayan Smoky Chew',
-    description: 'Smoked yak cheese chew with a rich, smoky flavor your dog will love.',
-    price: 14.99,
-    image: 'https://images.unsplash.com/photo-1585110396000-c9ffd4d4b3f0?w=500&h=400&fit=crop',
-    rating: 4.9,
-    reviews: 89
-  },
-  {
-    id: 3,
-    name: 'Soft Yak Chew Pack',
-    description: 'Perfect for puppies and senior dogs. Softer texture, same great taste.',
-    price: 10.99,
-    image: 'https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=500&h=400&fit=crop',
-    rating: 4.7,
-    reviews: 56
-  },
-  {
-    id: 4,
-    name: 'Premium Long-Lasting Chew',
-    description: 'Our longest-lasting chew - keeps dogs busy for hours.',
-    price: 16.99,
-    image: 'https://images.unsplash.com/photo-1580959375944-abd7e991fce3?w=500&h=400&fit=crop',
-    rating: 4.9,
-    reviews: 203
-  }
-];
+import productsData from '@/data/products.json';
 
 export default function Products() {
-  const products = MOCK_PRODUCTS;
-  const isLoading = false;
+    const products = productsData;
+    const isLoading = false;
 
-  return (
-    <div className="min-h-screen bg-stone-50">
+   return (
+    <div className="min-h-screen bg-gradient-to-br from-sky-50 via-white to-orange-50">
       {/* Header */}
-      <section className="bg-gradient-to-br from-slate-50 via-blue-50 to-amber-50 py-20 relative overflow-hidden">
-        <svg className="absolute bottom-0 left-0 w-full h-16 opacity-5" viewBox="0 0 1440 60" preserveAspectRatio="none">
-          <path fill="#1e3a5f" d="M0,60 L0,40 L180,30 L360,50 L540,20 L720,40 L900,15 L1080,35 L1260,10 L1440,25 L1440,60 Z"/>
-        </svg>
-        <div className="container mx-auto px-6 lg:px-12">
+      <section className="relative py-32 overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.03]">
+          <svg className="absolute bottom-0 w-full h-64" viewBox="0 0 1440 300" preserveAspectRatio="none">
+            <path fill="#0c4a6e" d="M0,300 L0,150 L120,110 L240,170 L360,90 L480,150 L600,70 L720,130 L840,50 L960,110 L1080,30 L1200,90 L1320,20 L1440,70 L1440,300 Z"/>
+          </svg>
+        </div>
+
+        <div className="container mx-auto px-6 lg:px-12 relative">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
             className="text-center"
           >
-            <span className="inline-block px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm font-medium mb-4">
-              🏔️ From Nepal's Himalayas
-            </span>
-            <h1 className="text-4xl md:text-5xl font-bold text-slate-800 mb-4">
-              Himalayan Yak Cheese Chews
+            <div className="inline-flex items-center gap-2 px-5 py-2 bg-white/80 backdrop-blur rounded-full mb-8 shadow-lg">
+              <span className="text-2xl">🏔️</span>
+              <span className="text-sm font-semibold text-sky-900">From Nepal's Peaks</span>
+            </div>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
+              <span className="bg-gradient-to-r from-sky-700 to-blue-700 bg-clip-text text-transparent">
+                Our Premium
+              </span>
+              <br />
+              <span className="text-slate-900">Himalayan Chews</span>
             </h1>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
               Authentic, all-natural chews crafted using traditional Nepalese recipes your pup will love.
             </p>
           </motion.div>
@@ -75,23 +45,23 @@ export default function Products() {
       </section>
 
       {/* Products Grid */}
-      <section className="py-16">
+      <section className="pb-32">
         <div className="container mx-auto px-6 lg:px-12">
           {isLoading ? (
-            <div className="flex justify-center py-20">
-              <Loader2 className="w-8 h-8 animate-spin text-amber-600" />
+            <div className="flex justify-center py-32">
+              <Loader2 className="w-12 h-12 animate-spin text-sky-600" />
             </div>
           ) : products.length === 0 ? (
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="text-center py-20"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="text-center py-32 bg-white/60 backdrop-blur rounded-[3rem] shadow-xl max-w-2xl mx-auto"
             >
-              <div className="text-6xl mb-6">🦴</div>
-              <h3 className="text-2xl font-semibold text-stone-800 mb-3">
+              <div className="text-8xl mb-8">🦴</div>
+              <h3 className="text-3xl font-bold text-slate-900 mb-4">
                 Products Coming Soon!
               </h3>
-              <p className="text-stone-600 max-w-md mx-auto">
+              <p className="text-lg text-slate-600 max-w-md mx-auto">
                 We're preparing our best selection of dog chews for you. 
                 Check back soon or visit our Amazon store!
               </p>

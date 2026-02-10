@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Check } from 'lucide-react';
+import { Check, Award } from 'lucide-react';
 
 const trustPoints = [
   "Sourced from free-range yaks in the Himalayas",
@@ -12,81 +12,94 @@ const trustPoints = [
 
 export default function TrustSection() {
   return (
-    <section className="py-24 bg-gradient-to-br from-blue-50 via-slate-50 to-amber-50 overflow-hidden relative">
-      {/* Mountain silhouette overlay */}
-      <svg className="absolute bottom-0 left-0 w-full h-32 opacity-5" viewBox="0 0 1440 120" preserveAspectRatio="none">
-        <path fill="#1e3a5f" d="M0,120 L0,80 L100,60 L200,90 L300,40 L400,70 L500,30 L600,60 L700,20 L800,50 L900,10 L1000,40 L1100,0 L1200,30 L1300,5 L1440,25 L1440,120 Z"/>
-      </svg>
+    <section className="py-32 bg-white overflow-hidden relative">
+      {/* Decorative paw prints */}
+      <div className="absolute top-10 right-10 text-9xl opacity-[0.02] rotate-12">🐾</div>
+      <div className="absolute bottom-10 left-10 text-9xl opacity-[0.02] -rotate-12">🐾</div>
+
       <div className="container mx-auto px-6 lg:px-12">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
           >
-            <span className="inline-block px-4 py-2 bg-[#D2691E]/10 text-[#8B4513] rounded-full text-sm font-medium mb-6">
-              🇳🇵 From the Himalayas of Nepal
-            </span>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight text-slate-800">
-              Why Pet Parents
-              <span className="block text-[#8B4513]">Trust Us</span>
+            <div className="inline-flex items-center gap-2 px-5 py-2 bg-gradient-to-r from-emerald-100 to-teal-100 rounded-full mb-6">
+              <span className="text-xl">🇳🇵</span>
+              <span className="text-sm font-semibold text-emerald-900">From the Himalayas of Nepal</span>
+            </div>
+            
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight">
+              <span className="text-slate-900">Why Pet Parents</span>
+              <br />
+              <span className="bg-gradient-to-r from-sky-700 to-blue-700 bg-clip-text text-transparent">
+                Trust Us
+              </span>
             </h2>
-            <p className="text-slate-600 text-lg mb-8 leading-relaxed">
+            
+            <p className="text-xl text-slate-600 mb-10 leading-relaxed">
               Our chews are crafted using an ancient Himalayan recipe, combining yak and 
               cow milk to create a hard cheese that dogs absolutely love. No chemicals, 
               no shortcuts - just pure, natural goodness.
             </p>
             
-            <div className="space-y-4">
+            <div className="space-y-5">
               {trustPoints.map((point, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -30 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="flex items-center gap-4"
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  className="flex items-center gap-4 group"
                 >
-                  <div className="w-6 h-6 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Check className="w-4 h-4 text-white" />
+                  <div className="w-7 h-7 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform">
+                    <Check className="w-4 h-4 text-white" strokeWidth={3} />
                   </div>
-                  <span className="text-slate-700">{point}</span>
+                  <span className="text-lg text-slate-700 font-medium">{point}</span>
                 </motion.div>
               ))}
             </div>
           </motion.div>
           
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             className="relative"
           >
             <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-br from-[#D2691E]/30 to-blue-200 rounded-[3rem] blur-xl" />
-              <img
-                src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=600&h=500&fit=crop"
-                alt="Happy dog owner with their pet"
-                className="relative rounded-3xl object-cover w-full h-[500px]"
-              />
+              {/* Gradient glow */}
+              <div className="absolute -inset-8 bg-gradient-to-br from-sky-400/30 via-blue-400/20 to-orange-400/30 rounded-[4rem] blur-3xl" />
+              
+              {/* Main image */}
+              <div className="relative rounded-[3rem] overflow-hidden shadow-2xl shadow-slate-900/20">
+                <div className="absolute inset-0 bg-gradient-to-br from-sky-600/10 to-orange-600/10 mix-blend-overlay" />
+                <img
+                  src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=700&h=600&fit=crop"
+                  alt="Happy dog owner with their pet"
+                  className="w-full h-[600px] object-cover"
+                />
+              </div>
             </div>
             
+            {/* Floating stat card */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.5 }}
-              className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-white rounded-2xl p-6 shadow-2xl w-[90%] max-w-sm"
+              transition={{ delay: 0.6 }}
+              className="absolute -bottom-8 left-1/2 -translate-x-1/2 bg-white rounded-3xl p-8 shadow-2xl shadow-slate-900/20 w-[90%] max-w-md border border-slate-100"
             >
-              <div className="flex items-center gap-4">
-                <div className="w-14 h-14 bg-[#D2691E]/20 rounded-full flex items-center justify-center">
-                  <span className="text-2xl">🏆</span>
+              <div className="flex items-center gap-5">
+                <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center shadow-lg">
+                  <Award className="w-8 h-8 text-white" />
                 </div>
                 <div>
-                  <p className="font-bold text-stone-800 text-lg">10,000+</p>
-                  <p className="text-stone-500">Happy Customers</p>
+                  <p className="font-extrabold text-slate-900 text-3xl">10,000+</p>
+                  <p className="text-slate-600 font-medium">Happy Customers</p>
                 </div>
               </div>
             </motion.div>
