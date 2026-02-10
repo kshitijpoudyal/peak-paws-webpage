@@ -74,7 +74,7 @@ export default function HeroSection() {
             </h1>
             
             <p className="text-xl text-slate-600 mb-10 leading-relaxed max-w-xl">
-              Authentic Himalayan yak cheese chews crafted using ancient recipes. 
+              Authentic Himalayan Yak cheese chews crafted using ancient recipes. 
               100% natural, grain-free, and packed with protein for endless tail wags.
             </p>
             

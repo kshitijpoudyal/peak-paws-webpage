@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Check, Award } from 'lucide-react';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import carouselImages from '@/data/customerImages.json';
 
 const trustPoints = [
   "Sourced from free-range yaks in the Himalayas",
@@ -11,6 +13,18 @@ const trustPoints = [
 ];
 
 export default function TrustSection() {
+  const [api, setApi] = React.useState();
+
+  React.useEffect(() => {
+    if (!api) return;
+
+    const interval = setInterval(() => {
+      api.scrollNext();
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [api]);
+
   return (
     <section className="py-32 bg-white overflow-hidden relative">
       {/* Decorative paw prints */}
@@ -74,15 +88,25 @@ export default function TrustSection() {
               {/* Gradient glow */}
               <div className="absolute -inset-8 bg-gradient-to-br from-sky-400/30 via-blue-400/20 to-orange-400/30 rounded-[4rem] blur-3xl" />
               
-              {/* Main image */}
-              <div className="relative rounded-[3rem] overflow-hidden shadow-2xl shadow-slate-900/20">
-                <div className="absolute inset-0 bg-gradient-to-br from-sky-600/10 to-orange-600/10 mix-blend-overlay" />
-                <img
-                  src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=700&h=600&fit=crop"
-                  alt="Happy dog owner with their pet"
-                  className="w-full h-[600px] object-cover"
-                />
-              </div>
+              {/* Carousel */}
+              <Carousel setApi={setApi} className="relative rounded-[3rem] overflow-hidden shadow-2xl shadow-slate-900/20" opts={{ loop: true }}>
+                <CarouselContent>
+                  {carouselImages.map((image, index) => (
+                    <CarouselItem key={index}>
+                      <div className="relative">
+                        <div className="absolute inset-0 bg-gradient-to-br from-sky-600/10 to-orange-600/10 mix-blend-overlay" />
+                        <img
+                          src={image.url}
+                          alt={image.alt}
+                          className="w-full h-[600px] object-cover"
+                        />
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="left-4" />
+                <CarouselNext className="right-4" />
+              </Carousel>
             </div>
             
             {/* Floating stat card */}
