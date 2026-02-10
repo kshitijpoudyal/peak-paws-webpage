@@ -1,39 +1,147 @@
-**Welcome to your Base44 project** 
+# 🐾 Peak Paws
 
-**About**
+A modern, responsive website for Peak Paws - authentic Himalayan yak cheese dog chews from Nepal's mountains.
 
-View and Edit  your app on [Base44.com](http://Base44.com) 
+## 🚀 Tech Stack
 
-This project contains everything you need to run your app locally.
+- **Framework:** React 18
+- **Build Tool:** Vite
+- **Styling:** Tailwind CSS
+- **Animations:** Framer Motion
+- **Routing:** React Router DOM
+- **Icons:** Lucide React
+- **UI Components:** Radix UI primitives
+- **Deployment:** Vercel
 
-**Edit the code in your local development environment**
+## ✨ Features
 
-Any change pushed to the repo will also be reflected in the Base44 Builder.
+- 🏔️ Beautiful, responsive design with Himalayan-inspired aesthetics
+- 📱 Mobile-first approach with smooth animations
+- 🛍️ Product showcase with mock data
+- 📬 Contact form with client-side validation
+- 🎨 Custom Tailwind theme with brand colors
+- ⚡ Fast page loads with Vite optimizations
+- 🌐 SPA routing for seamless navigation
 
-**Prerequisites:** 
+## 🛠️ Getting Started
 
-1. Clone the repository using the project's Git URL 
-2. Navigate to the project directory
-3. Install dependencies: `npm install`
-4. Create an `.env.local` file and set the right environment variables
+### Prerequisites
+
+- Node.js 18+ and npm
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone git@github.com:kshitijpoudyal/peak-paws-webpage.git
+cd peak-paws
+```
+
+2. Install dependencies:
+```bash
+npm install
+```
+
+3. Create environment file:
+```bash
+cp .env.example .env.local
+```
+
+4. Start development server:
+```bash
+npm run dev
+```
+
+The app will be available at `http://localhost:8080`
+
+## 📜 Available Scripts
+
+- `npm run dev` - Start development server on port 8080
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build locally
+- `npm run lint` - Run ESLint
+- `npm run lint:fix` - Fix ESLint errors
+
+## 🎨 Brand Colors
+
+The project uses custom brand colors defined in Tailwind config:
+
+- **Orange:** `#F9A93A` - Primary CTA buttons
+- **Brown:** `#8B4513` - Nav links, secondary elements
+- **Dark Brown:** `#6B3410` - Hover states
+
+Use them in your components:
+```jsx
+<div className="bg-brand-orange text-white">
+<button className="hover:bg-brand-dark-brown">
+```
+
+## 📁 Project Structure
 
 ```
-VITE_BASE44_APP_ID=your_app_id
-VITE_BASE44_APP_BASE_URL=your_backend_url
-
-e.g.
-VITE_BASE44_APP_ID=cbef744a8545c389ef439ea6
-VITE_BASE44_APP_BASE_URL=https://my-to-do-list-81bfaad7.base44.app
+peak-paws/
+├── src/
+│   ├── components/     # Reusable UI components
+│   │   ├── contact/   # Contact form
+│   │   ├── home/      # Home page sections
+│   │   ├── products/  # Product components
+│   │   └── ui/        # Radix UI components
+│   ├── pages/         # Page components
+│   ├── lib/           # Utilities and helpers
+│   ├── App.jsx        # Main app component
+│   ├── Layout.jsx     # Layout with nav/footer
+│   └── main.jsx       # Entry point
+├── public/            # Static assets
+└── dist/              # Production build output
 ```
 
-Run the app: `npm run dev`
+## 🚀 Deployment
 
-**Publish your changes**
+### Deploy to Vercel
 
-Open [Base44.com](http://Base44.com) and click on Publish.
+1. Push to GitHub:
+```bash
+git add .
+git commit -m "Your message"
+git push
+```
 
-**Docs & Support**
+2. Import project in [Vercel Dashboard](https://vercel.com)
+3. Vercel auto-detects Vite configuration
+4. Set environment variables (if needed) in Vercel settings
+5. Deploy!
 
-Documentation: [https://docs.base44.com/Integrations/Using-GitHub](https://docs.base44.com/Integrations/Using-GitHub)
+The `vercel.json` config handles SPA routing and asset caching automatically.
 
-Support: [https://app.base44.com/support](https://app.base44.com/support)
+## 🌐 Environment Variables
+
+Copy `.env.example` to `.env.local` and configure:
+
+```env
+VITE_APP_NAME=Peak Paws
+VITE_APP_URL=http://localhost:8080
+```
+
+For production, set these in your Vercel dashboard.
+
+## 📝 Notes
+
+- This is a **frontend-only** application with no backend
+- Product data is currently mocked in `src/pages/Products.jsx`
+- Contact form validates client-side and logs to console
+- All Base44 SDK dependencies have been removed
+
+## 🤝 Contributing
+
+1. Create a feature branch: `git checkout -b feature/amazing-feature`
+2. Commit changes: `git commit -m 'Add amazing feature'`
+3. Push to branch: `git push origin feature/amazing-feature`
+4. Open a Pull Request
+
+## 📄 License
+
+This project is private and proprietary.
+
+---
+
+Built with ❤️ for Peak Paws - Bringing Himalayan quality to your furry friends!
