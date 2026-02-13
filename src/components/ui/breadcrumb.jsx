@@ -9,6 +9,12 @@ const Breadcrumb = React.forwardRef(
 )
 Breadcrumb.displayName = "Breadcrumb"
 
+/**
+ * @typedef {Object} BreadcrumbListProps
+ * @property {string} [className]
+ */
+
+/** @type {React.ForwardRefExoticComponent<BreadcrumbListProps & React.HTMLAttributes<HTMLOListElement> & React.RefAttributes<HTMLOListElement>>} */
 const BreadcrumbList = React.forwardRef(({ className, ...props }, ref) => (
   <ol
     ref={ref}
@@ -20,6 +26,12 @@ const BreadcrumbList = React.forwardRef(({ className, ...props }, ref) => (
 ))
 BreadcrumbList.displayName = "BreadcrumbList"
 
+/**
+ * @typedef {Object} BreadcrumbItemProps
+ * @property {string} [className]
+ */
+
+/** @type {React.ForwardRefExoticComponent<BreadcrumbItemProps & React.HTMLAttributes<HTMLLIElement> & React.RefAttributes<HTMLLIElement>>} */
 const BreadcrumbItem = React.forwardRef(({ className, ...props }, ref) => (
   <li
     ref={ref}
@@ -28,6 +40,13 @@ const BreadcrumbItem = React.forwardRef(({ className, ...props }, ref) => (
 ))
 BreadcrumbItem.displayName = "BreadcrumbItem"
 
+/**
+ * @typedef {Object} BreadcrumbLinkProps
+ * @property {boolean} [asChild]
+ * @property {string} [className]
+ */
+
+/** @type {React.ForwardRefExoticComponent<BreadcrumbLinkProps & React.AnchorHTMLAttributes<HTMLAnchorElement> & React.RefAttributes<HTMLAnchorElement>>} */
 const BreadcrumbLink = React.forwardRef(({ asChild, className, ...props }, ref) => {
   const Comp = asChild ? Slot : "a"
 
@@ -40,6 +59,12 @@ const BreadcrumbLink = React.forwardRef(({ asChild, className, ...props }, ref) 
 })
 BreadcrumbLink.displayName = "BreadcrumbLink"
 
+/**
+ * @typedef {Object} BreadcrumbPageProps
+ * @property {string} [className]
+ */
+
+/** @type {React.ForwardRefExoticComponent<BreadcrumbPageProps & React.HTMLAttributes<HTMLSpanElement> & React.RefAttributes<HTMLSpanElement>>} */
 const BreadcrumbPage = React.forwardRef(({ className, ...props }, ref) => (
   <span
     ref={ref}

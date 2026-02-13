@@ -17,6 +17,17 @@ function useCarousel() {
   return context
 }
 
+/**
+ * @typedef {Object} CarouselProps
+ * @property {'horizontal' | 'vertical'} [orientation]
+ * @property {Object} [opts]
+ * @property {Function} [setApi]
+ * @property {Array} [plugins]
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/** @type {React.ForwardRefExoticComponent<CarouselProps & React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>} */
 const Carousel = React.forwardRef((
   {
     orientation = "horizontal",
@@ -112,6 +123,12 @@ const Carousel = React.forwardRef((
 })
 Carousel.displayName = "Carousel"
 
+/**
+ * @typedef {Object} CarouselContentProps
+ * @property {string} [className]
+ */
+
+/** @type {React.ForwardRefExoticComponent<CarouselContentProps & React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>} */
 const CarouselContent = React.forwardRef(({ className, ...props }, ref) => {
   const { carouselRef, orientation } = useCarousel()
 
@@ -130,6 +147,12 @@ const CarouselContent = React.forwardRef(({ className, ...props }, ref) => {
 })
 CarouselContent.displayName = "CarouselContent"
 
+/**
+ * @typedef {Object} CarouselItemProps
+ * @property {string} [className]
+ */
+
+/** @type {React.ForwardRefExoticComponent<CarouselItemProps & React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>} */
 const CarouselItem = React.forwardRef(({ className, ...props }, ref) => {
   const { orientation } = useCarousel()
 
@@ -148,6 +171,14 @@ const CarouselItem = React.forwardRef(({ className, ...props }, ref) => {
 })
 CarouselItem.displayName = "CarouselItem"
 
+/**
+ * @typedef {Object} CarouselPreviousProps
+ * @property {string} [className]
+ * @property {string} [variant]
+ * @property {string} [size]
+ */
+
+/** @type {React.ForwardRefExoticComponent<CarouselPreviousProps & React.ComponentPropsWithoutRef<typeof Button> & React.RefAttributes<HTMLButtonElement>>} */
 const CarouselPrevious = React.forwardRef(({ className, variant = "outline", size = "icon", ...props }, ref) => {
   const { orientation, scrollPrev, canScrollPrev } = useCarousel()
 
@@ -169,6 +200,14 @@ const CarouselPrevious = React.forwardRef(({ className, variant = "outline", siz
 })
 CarouselPrevious.displayName = "CarouselPrevious"
 
+/**
+ * @typedef {Object} CarouselNextProps
+ * @property {string} [className]
+ * @property {string} [variant]
+ * @property {string} [size]
+ */
+
+/** @type {React.ForwardRefExoticComponent<CarouselNextProps & React.ComponentPropsWithoutRef<typeof Button> & React.RefAttributes<HTMLButtonElement>>} */
 const CarouselNext = React.forwardRef(({ className, variant = "outline", size = "icon", ...props }, ref) => {
   const { orientation, scrollNext, canScrollNext } = useCarousel()
 

@@ -2,6 +2,12 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
+/**
+ * @typedef {Object} CardProps
+ * @property {string} [className]
+ */
+
+/** @type {React.ForwardRefExoticComponent<CardProps & React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>} */
 const Card = React.forwardRef(({ className, ...props }, ref) => (
   <div
     ref={ref}
@@ -10,6 +16,12 @@ const Card = React.forwardRef(({ className, ...props }, ref) => (
 ))
 Card.displayName = "Card"
 
+/**
+ * @typedef {Object} CardHeaderProps
+ * @property {string} [className]
+ */
+
+/** @type {React.ForwardRefExoticComponent<CardHeaderProps & React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>} */
 const CardHeader = React.forwardRef(({ className, ...props }, ref) => (
   <div
     ref={ref}
@@ -18,6 +30,12 @@ const CardHeader = React.forwardRef(({ className, ...props }, ref) => (
 ))
 CardHeader.displayName = "CardHeader"
 
+/**
+ * @typedef {Object} CardTitleProps
+ * @property {string} [className]
+ */
+
+/** @type {React.ForwardRefExoticComponent<CardTitleProps & React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>} */
 const CardTitle = React.forwardRef(({ className, ...props }, ref) => (
   <div
     ref={ref}
@@ -26,6 +44,12 @@ const CardTitle = React.forwardRef(({ className, ...props }, ref) => (
 ))
 CardTitle.displayName = "CardTitle"
 
+/**
+ * @typedef {Object} CardDescriptionProps
+ * @property {string} [className]
+ */
+
+/** @type {React.ForwardRefExoticComponent<CardDescriptionProps & React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>} */
 const CardDescription = React.forwardRef(({ className, ...props }, ref) => (
   <div
     ref={ref}
@@ -34,11 +58,23 @@ const CardDescription = React.forwardRef(({ className, ...props }, ref) => (
 ))
 CardDescription.displayName = "CardDescription"
 
+/**
+ * @typedef {Object} CardContentProps
+ * @property {string} [className]
+ */
+
+/** @type {React.ForwardRefExoticComponent<CardContentProps & React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>} */
 const CardContent = React.forwardRef(({ className, ...props }, ref) => (
   <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
 ))
 CardContent.displayName = "CardContent"
 
+/**
+ * @typedef {Object} CardFooterProps
+ * @property {string} [className]
+ */
+
+/** @type {React.ForwardRefExoticComponent<CardFooterProps & React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>} */
 const CardFooter = React.forwardRef(({ className, ...props }, ref) => (
   <div
     ref={ref}
