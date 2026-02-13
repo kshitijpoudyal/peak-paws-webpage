@@ -130,7 +130,7 @@ export default function HeroSection() {
                     </motion.svg>
                   ))}
                 </div>
-                <p className="text-sm text-slate-500 font-medium">Trusted by 10,000+ dog parents</p>
+                <p className="text-sm text-slate-500 font-medium">Trusted by dog parents</p>
               </div>
             </div>
           </motion.div>

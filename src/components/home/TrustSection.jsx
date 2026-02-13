@@ -122,7 +122,7 @@ export default function TrustSection() {
                   <Award className="w-8 h-8 text-white" />
                 </div>
                 <div>
-                  <p className="font-extrabold text-slate-900 text-3xl">10,000+</p>
+                  {/* <p className="font-extrabold text-slate-900 text-3xl">10,000+</p> */}
                   <p className="text-slate-600 font-medium">Happy Customers</p>
                 </div>
               </div>
