@@ -7,7 +7,7 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email Us",
-    description: "support@peakpawschew.com",
+    description: "info@peakpawschew.com",
     subtext: "We'll respond within 24 hours",
     gradient: "from-sky-400 to-blue-500"
   },

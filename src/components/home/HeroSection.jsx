@@ -167,41 +167,6 @@ export default function HeroSection() {
                   className="w-full h-[700px] object-cover"
                 />
               </div>
-              
-              {/* Floating badges */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1 }}
-                className="absolute -left-6 top-1/4 bg-white rounded-3xl p-5 shadow-2xl shadow-sky-900/20"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-14 h-14 bg-gradient-to-br from-sky-100 to-blue-200 rounded-2xl flex items-center justify-center">
-                    <span className="text-3xl">🏔️</span>
-                  </div>
-                  <div>
-                    <p className="font-bold text-slate-900">Himalayan</p>
-                    <p className="text-sm text-slate-500">Authentic Recipe</p>
-                  </div>
-                </div>
-              </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2 }}
-                className="absolute -right-6 bottom-1/3 bg-white rounded-3xl p-5 shadow-2xl shadow-orange-900/20"
-              >
-                <div className="flex items-center gap-3">
-                  <div className="w-14 h-14 bg-gradient-to-br from-orange-100 to-amber-200 rounded-2xl flex items-center justify-center">
-                    <span className="text-3xl">💪</span>
-                  </div>
-                  <div>
-                    <p className="font-bold text-slate-900">High Protein</p>
-                    <p className="text-sm text-slate-500">100% Natural</p>
-                  </div>
-                </div>
-              </motion.div>
             </div>
           </motion.div>
         </div>
