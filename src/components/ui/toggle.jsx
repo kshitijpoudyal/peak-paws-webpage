@@ -26,6 +26,14 @@ const toggleVariants = cva(
   }
 )
 
+/**
+ * @typedef {Object} ToggleProps
+ * @property {string} [className]
+ * @property {'default' | 'outline'} [variant]
+ * @property {'default' | 'sm' | 'lg'} [size]
+ */
+
+/** @type {React.ForwardRefExoticComponent<ToggleProps & React.ComponentPropsWithoutRef<typeof TogglePrimitive.Root> & React.RefAttributes<React.ElementRef<typeof TogglePrimitive.Root>>>} */
 const Toggle = React.forwardRef(({ className, variant, size, ...props }, ref) => (
   <TogglePrimitive.Root
     ref={ref}

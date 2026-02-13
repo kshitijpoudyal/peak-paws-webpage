@@ -47,6 +47,12 @@ const useFormField = () => {
 
 const FormItemContext = React.createContext({})
 
+/**
+ * @typedef {Object} FormItemProps
+ * @property {string} [className]
+ */
+
+/** @type {React.ForwardRefExoticComponent<FormItemProps & React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>} */
 const FormItem = React.forwardRef(({ className, ...props }, ref) => {
   const id = React.useId()
 
@@ -58,6 +64,12 @@ const FormItem = React.forwardRef(({ className, ...props }, ref) => {
 })
 FormItem.displayName = "FormItem"
 
+/**
+ * @typedef {Object} FormLabelProps
+ * @property {string} [className]
+ */
+
+/** @type {React.ForwardRefExoticComponent<FormLabelProps & React.ComponentPropsWithoutRef<typeof Label> & React.RefAttributes<React.ElementRef<typeof Label>>>} */
 const FormLabel = React.forwardRef(({ className, ...props }, ref) => {
   const { error, formItemId } = useFormField()
 
@@ -89,6 +101,12 @@ const FormControl = React.forwardRef(({ ...props }, ref) => {
 })
 FormControl.displayName = "FormControl"
 
+/**
+ * @typedef {Object} FormDescriptionProps
+ * @property {string} [className]
+ */
+
+/** @type {React.ForwardRefExoticComponent<FormDescriptionProps & React.HTMLAttributes<HTMLParagraphElement> & React.RefAttributes<HTMLParagraphElement>>} */
 const FormDescription = React.forwardRef(({ className, ...props }, ref) => {
   const { formDescriptionId } = useFormField()
 
@@ -102,6 +120,13 @@ const FormDescription = React.forwardRef(({ className, ...props }, ref) => {
 })
 FormDescription.displayName = "FormDescription"
 
+/**
+ * @typedef {Object} FormMessageProps
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/** @type {React.ForwardRefExoticComponent<FormMessageProps & React.HTMLAttributes<HTMLParagraphElement> & React.RefAttributes<HTMLParagraphElement>>} */
 const FormMessage = React.forwardRef(({ className, children, ...props }, ref) => {
   const { error, formMessageId } = useFormField()
   const body = error ? String(error?.message) : children

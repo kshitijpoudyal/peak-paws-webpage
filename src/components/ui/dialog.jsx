@@ -14,6 +14,12 @@ const DialogPortal = DialogPrimitive.Portal
 
 const DialogClose = DialogPrimitive.Close
 
+/**
+ * @typedef {Object} DialogOverlayProps
+ * @property {string} [className]
+ */
+
+/** @type {React.ForwardRefExoticComponent<DialogOverlayProps & React.ComponentPropsWithoutRef<typeof DialogPrimitive.Overlay> & React.RefAttributes<React.ElementRef<typeof DialogPrimitive.Overlay>>>} */
 const DialogOverlay = React.forwardRef(({ className, ...props }, ref) => (
   <DialogPrimitive.Overlay
     ref={ref}
@@ -25,6 +31,13 @@ const DialogOverlay = React.forwardRef(({ className, ...props }, ref) => (
 ))
 DialogOverlay.displayName = DialogPrimitive.Overlay.displayName
 
+/**
+ * @typedef {Object} DialogContentProps
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/** @type {React.ForwardRefExoticComponent<DialogContentProps & React.ComponentPropsWithoutRef<typeof DialogPrimitive.Content> & React.RefAttributes<React.ElementRef<typeof DialogPrimitive.Content>>>} */
 const DialogContent = React.forwardRef(({ className, children, ...props }, ref) => (
   <DialogPortal>
     <DialogOverlay />
@@ -66,6 +79,12 @@ const DialogFooter = ({
 )
 DialogFooter.displayName = "DialogFooter"
 
+/**
+ * @typedef {Object} DialogTitleProps
+ * @property {string} [className]
+ */
+
+/** @type {React.ForwardRefExoticComponent<DialogTitleProps & React.ComponentPropsWithoutRef<typeof DialogPrimitive.Title> & React.RefAttributes<React.ElementRef<typeof DialogPrimitive.Title>>>} */
 const DialogTitle = React.forwardRef(({ className, ...props }, ref) => (
   <DialogPrimitive.Title
     ref={ref}
@@ -74,6 +93,12 @@ const DialogTitle = React.forwardRef(({ className, ...props }, ref) => (
 ))
 DialogTitle.displayName = DialogPrimitive.Title.displayName
 
+/**
+ * @typedef {Object} DialogDescriptionProps
+ * @property {string} [className]
+ */
+
+/** @type {React.ForwardRefExoticComponent<DialogDescriptionProps & React.ComponentPropsWithoutRef<typeof DialogPrimitive.Description> & React.RefAttributes<React.ElementRef<typeof DialogPrimitive.Description>>>} */
 const DialogDescription = React.forwardRef(({ className, ...props }, ref) => (
   <DialogPrimitive.Description
     ref={ref}

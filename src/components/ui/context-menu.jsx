@@ -16,6 +16,8 @@ const ContextMenuSub = ContextMenuPrimitive.Sub
 
 const ContextMenuRadioGroup = ContextMenuPrimitive.RadioGroup
 
+/** @typedef {Object} ContextMenuSubTriggerProps @property {string} [className] @property {boolean} [inset] @property {React.ReactNode} [children] */
+/** @type {React.ForwardRefExoticComponent<ContextMenuSubTriggerProps & React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.SubTrigger> & React.RefAttributes<React.ElementRef<typeof ContextMenuPrimitive.SubTrigger>>>} */
 const ContextMenuSubTrigger = React.forwardRef(({ className, inset, children, ...props }, ref) => (
   <ContextMenuPrimitive.SubTrigger
     ref={ref}
@@ -31,6 +33,8 @@ const ContextMenuSubTrigger = React.forwardRef(({ className, inset, children, ..
 ))
 ContextMenuSubTrigger.displayName = ContextMenuPrimitive.SubTrigger.displayName
 
+/** @typedef {Object} ContextMenuSubContentProps @property {string} [className] */
+/** @type {React.ForwardRefExoticComponent<ContextMenuSubContentProps & React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.SubContent> & React.RefAttributes<React.ElementRef<typeof ContextMenuPrimitive.SubContent>>>} */
 const ContextMenuSubContent = React.forwardRef(({ className, ...props }, ref) => (
   <ContextMenuPrimitive.SubContent
     ref={ref}
@@ -42,6 +46,8 @@ const ContextMenuSubContent = React.forwardRef(({ className, ...props }, ref) =>
 ))
 ContextMenuSubContent.displayName = ContextMenuPrimitive.SubContent.displayName
 
+/** @typedef {Object} ContextMenuContentProps @property {string} [className] */
+/** @type {React.ForwardRefExoticComponent<ContextMenuContentProps & React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Content> & React.RefAttributes<React.ElementRef<typeof ContextMenuPrimitive.Content>>>} */
 const ContextMenuContent = React.forwardRef(({ className, ...props }, ref) => (
   <ContextMenuPrimitive.Portal>
     <ContextMenuPrimitive.Content
@@ -55,6 +61,8 @@ const ContextMenuContent = React.forwardRef(({ className, ...props }, ref) => (
 ))
 ContextMenuContent.displayName = ContextMenuPrimitive.Content.displayName
 
+/** @typedef {Object} ContextMenuItemProps @property {string} [className] @property {boolean} [inset] */
+/** @type {React.ForwardRefExoticComponent<ContextMenuItemProps & React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Item> & React.RefAttributes<React.ElementRef<typeof ContextMenuPrimitive.Item>>>} */
 const ContextMenuItem = React.forwardRef(({ className, inset, ...props }, ref) => (
   <ContextMenuPrimitive.Item
     ref={ref}
@@ -67,6 +75,8 @@ const ContextMenuItem = React.forwardRef(({ className, inset, ...props }, ref) =
 ))
 ContextMenuItem.displayName = ContextMenuPrimitive.Item.displayName
 
+/** @typedef {Object} ContextMenuCheckboxItemProps @property {string} [className] @property {React.ReactNode} [children] @property {boolean} [checked] */
+/** @type {React.ForwardRefExoticComponent<ContextMenuCheckboxItemProps & React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.CheckboxItem> & React.RefAttributes<React.ElementRef<typeof ContextMenuPrimitive.CheckboxItem>>>} */
 const ContextMenuCheckboxItem = React.forwardRef(({ className, children, checked, ...props }, ref) => (
   <ContextMenuPrimitive.CheckboxItem
     ref={ref}
@@ -87,6 +97,8 @@ const ContextMenuCheckboxItem = React.forwardRef(({ className, children, checked
 ContextMenuCheckboxItem.displayName =
   ContextMenuPrimitive.CheckboxItem.displayName
 
+/** @typedef {Object} ContextMenuRadioItemProps @property {string} [className] @property {React.ReactNode} [children] */
+/** @type {React.ForwardRefExoticComponent<ContextMenuRadioItemProps & React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.RadioItem> & React.RefAttributes<React.ElementRef<typeof ContextMenuPrimitive.RadioItem>>>} */
 const ContextMenuRadioItem = React.forwardRef(({ className, children, ...props }, ref) => (
   <ContextMenuPrimitive.RadioItem
     ref={ref}
@@ -105,6 +117,8 @@ const ContextMenuRadioItem = React.forwardRef(({ className, children, ...props }
 ))
 ContextMenuRadioItem.displayName = ContextMenuPrimitive.RadioItem.displayName
 
+/** @typedef {Object} ContextMenuLabelProps @property {string} [className] @property {boolean} [inset] */
+/** @type {React.ForwardRefExoticComponent<ContextMenuLabelProps & React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Label> & React.RefAttributes<React.ElementRef<typeof ContextMenuPrimitive.Label>>>} */
 const ContextMenuLabel = React.forwardRef(({ className, inset, ...props }, ref) => (
   <ContextMenuPrimitive.Label
     ref={ref}
@@ -117,6 +131,8 @@ const ContextMenuLabel = React.forwardRef(({ className, inset, ...props }, ref) 
 ))
 ContextMenuLabel.displayName = ContextMenuPrimitive.Label.displayName
 
+/** @typedef {Object} ContextMenuSeparatorProps @property {string} [className] */
+/** @type {React.ForwardRefExoticComponent<ContextMenuSeparatorProps & React.ComponentPropsWithoutRef<typeof ContextMenuPrimitive.Separator> & React.RefAttributes<React.ElementRef<typeof ContextMenuPrimitive.Separator>>>} */
 const ContextMenuSeparator = React.forwardRef(({ className, ...props }, ref) => (
   <ContextMenuPrimitive.Separator
     ref={ref}

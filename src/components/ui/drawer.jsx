@@ -19,6 +19,12 @@ const DrawerPortal = DrawerPrimitive.Portal
 
 const DrawerClose = DrawerPrimitive.Close
 
+/**
+ * @typedef {Object} DrawerOverlayProps
+ * @property {string} [className]
+ */
+
+/** @type {React.ForwardRefExoticComponent<DrawerOverlayProps & React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Overlay> & React.RefAttributes<React.ElementRef<typeof DrawerPrimitive.Overlay>>>} */
 const DrawerOverlay = React.forwardRef(({ className, ...props }, ref) => (
   <DrawerPrimitive.Overlay
     ref={ref}
@@ -27,6 +33,13 @@ const DrawerOverlay = React.forwardRef(({ className, ...props }, ref) => (
 ))
 DrawerOverlay.displayName = DrawerPrimitive.Overlay.displayName
 
+/**
+ * @typedef {Object} DrawerContentProps
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ */
+
+/** @type {React.ForwardRefExoticComponent<DrawerContentProps & React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Content> & React.RefAttributes<React.ElementRef<typeof DrawerPrimitive.Content>>>} */
 const DrawerContent = React.forwardRef(({ className, children, ...props }, ref) => (
   <DrawerPortal>
     <DrawerOverlay />
@@ -62,6 +75,12 @@ const DrawerFooter = ({
 )
 DrawerFooter.displayName = "DrawerFooter"
 
+/**
+ * @typedef {Object} DrawerTitleProps
+ * @property {string} [className]
+ */
+
+/** @type {React.ForwardRefExoticComponent<DrawerTitleProps & React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Title> & React.RefAttributes<React.ElementRef<typeof DrawerPrimitive.Title>>>} */
 const DrawerTitle = React.forwardRef(({ className, ...props }, ref) => (
   <DrawerPrimitive.Title
     ref={ref}
@@ -70,6 +89,12 @@ const DrawerTitle = React.forwardRef(({ className, ...props }, ref) => (
 ))
 DrawerTitle.displayName = DrawerPrimitive.Title.displayName
 
+/**
+ * @typedef {Object} DrawerDescriptionProps
+ * @property {string} [className]
+ */
+
+/** @type {React.ForwardRefExoticComponent<DrawerDescriptionProps & React.ComponentPropsWithoutRef<typeof DrawerPrimitive.Description> & React.RefAttributes<React.ElementRef<typeof DrawerPrimitive.Description>>>} */
 const DrawerDescription = React.forwardRef(({ className, ...props }, ref) => (
   <DrawerPrimitive.Description
     ref={ref}

@@ -10,6 +10,15 @@ const ToggleGroupContext = React.createContext({
   variant: "default",
 })
 
+/**
+ * @typedef {Object} ToggleGroupProps
+ * @property {string} [className]
+ * @property {'default' | 'outline'} [variant]
+ * @property {'default' | 'sm' | 'lg'} [size]
+ * @property {React.ReactNode} [children]
+ */
+
+/** @type {React.ForwardRefExoticComponent<ToggleGroupProps & React.ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Root> & React.RefAttributes<React.ElementRef<typeof ToggleGroupPrimitive.Root>>>} */
 const ToggleGroup = React.forwardRef(({ className, variant, size, children, ...props }, ref) => (
   <ToggleGroupPrimitive.Root
     ref={ref}
@@ -23,6 +32,15 @@ const ToggleGroup = React.forwardRef(({ className, variant, size, children, ...p
 
 ToggleGroup.displayName = ToggleGroupPrimitive.Root.displayName
 
+/**
+ * @typedef {Object} ToggleGroupItemProps
+ * @property {string} [className]
+ * @property {React.ReactNode} [children]
+ * @property {'default' | 'outline'} [variant]
+ * @property {'default' | 'sm' | 'lg'} [size]
+ */
+
+/** @type {React.ForwardRefExoticComponent<ToggleGroupItemProps & React.ComponentPropsWithoutRef<typeof ToggleGroupPrimitive.Item> & React.RefAttributes<React.ElementRef<typeof ToggleGroupPrimitive.Item>>>} */
 const ToggleGroupItem = React.forwardRef(({ className, children, variant, size, ...props }, ref) => {
   const context = React.useContext(ToggleGroupContext)
 
