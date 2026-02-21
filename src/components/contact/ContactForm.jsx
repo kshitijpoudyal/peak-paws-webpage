@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useForm, ValidationError } from '@formspree/react';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -7,24 +8,9 @@ import { Label } from '@/components/ui/label';
 import { Send, CheckCircle, Loader2 } from 'lucide-react';
 
 export default function ContactForm() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [state, handleSubmit] = useForm("mvzbbepo");
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    //TODO call backend API to send email
-    setIsSubmitting(false);
-    setIsSubmitted(true);
-    setFormData({ name: '', email: '', message: '' });
-  };
-
-  if (isSubmitted) {
+  if (state.succeeded) {
     return (
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
@@ -40,12 +26,6 @@ export default function ContactForm() {
         <p className="text-lg text-slate-600 mb-8">
           Thank you for reaching out. We'll get back to you within 24-48 hours.
         </p>
-        <Button
-          onClick={() => setIsSubmitted(false)}
-          className="bg-gradient-to-r from-sky-600 to-blue-700 hover:from-sky-700 hover:to-blue-800 text-white rounded-full px-8 py-6 shadow-lg"
-        >
-          Send Another Message
-        </Button>
       </motion.div>
     );
   }
@@ -65,11 +45,16 @@ export default function ContactForm() {
           <Input
             id="name"
             type="text"
+            name="name"
             required
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             className="rounded-2xl border-2 border-slate-200 focus:border-sky-500 focus:ring-sky-500 py-6 px-5 text-lg"
             placeholder="John Doe"
+          />
+          <ValidationError 
+            prefix="Name" 
+            field="name"
+            errors={state.errors}
+            className="text-red-500 text-sm mt-1"
           />
         </div>
         
@@ -80,11 +65,16 @@ export default function ContactForm() {
           <Input
             id="email"
             type="email"
+            name="email"
             required
-            value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             className="rounded-2xl border-2 border-slate-200 focus:border-sky-500 focus:ring-sky-500 py-6 px-5 text-lg"
             placeholder="john@example.com"
+          />
+          <ValidationError 
+            prefix="Email" 
+            field="email"
+            errors={state.errors}
+            className="text-red-500 text-sm mt-1"
           />
         </div>
         
@@ -94,21 +84,26 @@ export default function ContactForm() {
           </Label>
           <Textarea
             id="message"
+            name="message"
             required
             rows={6}
-            value={formData.message}
-            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
             className="rounded-2xl border-2 border-slate-200 focus:border-sky-500 focus:ring-sky-500 resize-none p-5 text-lg"
             placeholder="How can we help you?"
+          />
+          <ValidationError 
+            prefix="Message" 
+            field="message"
+            errors={state.errors}
+            className="text-red-500 text-sm mt-1"
           />
         </div>
         
         <Button
           type="submit"
-          disabled={isSubmitting}
+          disabled={state.submitting}
           className="w-full bg-gradient-to-r from-sky-600 to-blue-700 hover:from-sky-700 hover:to-blue-800 text-white rounded-2xl py-7 text-lg font-bold shadow-xl shadow-sky-900/20"
         >
-          {isSubmitting ? (
+          {state.submitting ? (
             <>
               <Loader2 className="w-5 h-5 mr-2 animate-spin" />
               Sending...
