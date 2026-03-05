@@ -1,7 +1,32 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { Carousel, CarouselContent, CarouselItem, CarouselPrevious, CarouselNext } from '@/components/ui/carousel';
 import { ArrowRight, ShoppingBag, Sparkles } from 'lucide-react';
 import { motion } from 'framer-motion';
+
+// Carousel slides data - replace src with your own images/videos
+const heroSlides = [
+  {
+    id: 1,
+    type: 'video',
+    src: '/content/package-original.mp4',
+    alt: 'Happy dog with chew toy',
+    speed: 2,
+  },
+  {
+    id: 2,
+    type: 'video',
+    src: '/content/package-short.mov',
+    alt: 'Happy dog with chew toy',
+    speed: 1.25,
+  },
+  {
+    id: 3,
+    type: 'image',
+    src: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=700&h=800&fit=crop',
+    alt: 'Dog in the mountains',
+  }
+];
 
 export default function HeroSection() {
   return (
@@ -143,30 +168,52 @@ export default function HeroSection() {
           >
             <div className="relative">
               {/* Paw prints decoration */}
-              <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-                className="absolute -top-10 -left-10 text-6xl opacity-20"
-              >
+              <div className="absolute -top-10 -left-10 text-6xl opacity-20">
                 🐾
-              </motion.div>
-              <motion.div
-                animate={{ rotate: -360 }}
-                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-                className="absolute -bottom-10 -right-10 text-6xl opacity-20"
-              >
+                </div>
+              <div className="absolute -bottom-10 -right-10 text-6xl opacity-20">
                 🐾
-              </motion.div>
-              
-              {/* Main image */}
-              <div className="relative rounded-[4rem] overflow-hidden shadow-2xl shadow-sky-900/30">
-                <div className="absolute inset-0 bg-gradient-to-br from-sky-400/20 to-orange-400/20 mix-blend-overlay" />
-                <img
-                  src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=700&h=800&fit=crop"
-                  alt="Dog in the mountains"
-                  className="w-full h-[700px] object-cover"
-                />
               </div>
+              
+              {/* Hero Carousel */}
+              <Carousel
+                opts={{
+                  loop: true,
+                  align: 'center',
+                }}
+                className="w-full"
+              >
+                <CarouselContent className="-ml-0">
+                  {heroSlides.map((slide) => (
+                    <CarouselItem key={slide.id} className="pl-0">
+                      <div className="relative rounded-[4rem] overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-br from-sky-400/20 to-orange-400/20 mix-blend-overlay z-10" />
+                        {slide.type === 'video' ? (
+                          <video
+                          ref={(el) => {
+                            if (el) el.playbackRate = slide.speed || 1;
+                            }}
+                            src={slide.src}
+                            className="w-full h-[700px] object-cover"
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                          />
+                        ) : (
+                          <img
+                            src={slide.src}
+                            alt={slide.alt}
+                            className="w-full h-[700px] object-cover"
+                          />
+                        )}
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+                <CarouselPrevious className="left-4 bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:bg-white" />
+                <CarouselNext className="right-4 bg-white/80 backdrop-blur-sm border-0 shadow-lg hover:bg-white" />
+              </Carousel>
             </div>
           </motion.div>
         </div>
