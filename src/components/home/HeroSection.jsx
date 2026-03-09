@@ -9,19 +9,12 @@ const heroSlides = [
   {
     id: 1,
     type: 'video',
-    src: '/content/package-original.mp4',
-    alt: 'Happy dog with chew toy',
-    speed: 2,
-  },
-  {
-    id: 2,
-    type: 'video',
     src: '/content/package-short.mov',
     alt: 'Happy dog with chew toy',
     speed: 1.25,
   },
   {
-    id: 3,
+    id: 2,
     type: 'image',
     src: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=700&h=800&fit=crop',
     alt: 'Dog in the mountains',
