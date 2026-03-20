@@ -1,6 +1,6 @@
 import { Toaster } from "@/components/ui/toaster"
 import { pagesConfig } from './pages.config'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 
 const { Pages, Layout, mainPage } = pagesConfig;
@@ -30,6 +30,7 @@ const AppRoutes = () => {
           }
         />
       ))}
+      <Route path="/info" element={<Navigate to="/Home" replace />} />
       <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
