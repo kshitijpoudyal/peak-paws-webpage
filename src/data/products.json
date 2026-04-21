@@ -6,7 +6,7 @@
     "image_url": "/products/small.png",
     "price": 14.99,
     "stripe_price_id": "price_small_yak_chew",
-    "amazon_url": "https://www.amazon.com/"
+    "amazon_url": "https://a.co/d/08ZyFCoC"
   },
   {
     "id": 2,
@@ -15,7 +15,7 @@
     "image_url": "/products/medium.png",
     "price": 19.99,
     "stripe_price_id": "price_medium_yak_chew",
-    "amazon_url": "https://www.amazon.com/"
+    "amazon_url": "https://a.co/d/042aBiMl"
   },
   {
     "id": 3,
@@ -24,6 +24,6 @@
     "image_url": "/products/large.png",
     "price": 24.99,
     "stripe_price_id": "price_large_yak_chew",
-    "amazon_url": "https://www.amazon.com/"
+    "amazon_url": "https://a.co/d/08Ulp5zX"
   }
 ]
