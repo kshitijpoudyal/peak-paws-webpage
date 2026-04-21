@@ -1,9 +1,19 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, ShoppingBag } from 'lucide-react';
+import { ExternalLink, ShoppingBag, ShoppingCart, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useCart } from '@/context/CartContext';
 
 export default function ProductCard({ product, index }) {
+  const { addToCart, cartItems } = useCart();
+  const [justAdded, setJustAdded] = React.useState(false);
+  const isInCart = cartItems.some((item) => item.id === product.id);
+
+  const handleAddToCart = () => {
+    addToCart(product);
+    setJustAdded(true);
+    setTimeout(() => setJustAdded(false), 1500);
+  };
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -35,25 +45,57 @@ export default function ProductCard({ product, index }) {
           </h3>
           
           {product.description && (
-            <p className="text-slate-600 text-sm mb-5 line-clamp-2 leading-relaxed">
+            <p className="text-slate-600 text-sm mb-3 line-clamp-2 leading-relaxed">
               {product.description}
             </p>
           )}
           
-          <Button
-            asChild
-            className="w-full bg-[#F9A93A] hover:bg-[#e89820] text-white rounded-2xl py-6 shadow-lg shadow-amber-900/20 group/btn"
-          >
-            <a 
-              href={product.amazon_url || "https://amazon.com"} 
-              target="_blank" 
-              rel="noopener noreferrer"
+          {product.price && (
+            <p className="text-2xl font-bold text-sky-700 mb-4">
+              ${product.price.toFixed(2)}
+            </p>
+          )}
+          
+          <div className="space-y-2">
+            <Button
+              onClick={handleAddToCart}
+              className={`w-full rounded-2xl py-6 shadow-lg transition-all duration-300 group/btn ${
+                justAdded
+                  ? 'bg-green-500 hover:bg-green-600 shadow-green-900/20'
+                  : 'bg-[#F9A93A] hover:bg-[#e89820] shadow-amber-900/20'
+              } text-white`}
             >
-              <ShoppingBag className="w-4 h-4 mr-2 group-hover/btn:rotate-12 transition-transform" />
-              View on Amazon
-              <ExternalLink className="w-4 h-4 ml-2" />
-            </a>
-          </Button>
+              {justAdded ? (
+                <>
+                  <Check className="w-4 h-4 mr-2" />
+                  Added to Cart!
+                </>
+              ) : (
+                <>
+                  <ShoppingCart className="w-4 h-4 mr-2 group-hover/btn:rotate-12 transition-transform" />
+                  Add to Cart
+                </>
+              )}
+            </Button>
+            
+            {product.amazon_url && (
+              <Button
+                asChild
+                variant="outline"
+                className="w-full rounded-2xl py-5 border-slate-200 hover:bg-slate-50"
+              >
+                <a 
+                  href={product.amazon_url} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  <ShoppingBag className="w-4 h-4 mr-2" />
+                  View on Amazon
+                  <ExternalLink className="w-4 h-4 ml-2" />
+                </a>
+              </Button>
+            )}
+          </div>
         </div>
       </div>
     </motion.div>

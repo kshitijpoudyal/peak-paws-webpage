@@ -2,8 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { createPageUrl } from '@/utils';
 import { Button } from '@/components/ui/button';
-import { Menu, X, ShoppingBag } from 'lucide-react';
+import { Menu, X, ShoppingBag, ShoppingCart } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useCart } from '@/context/CartContext';
+import CartDrawer from '@/components/cart/CartDrawer';
 
 const navLinks = [
   { name: 'Home', page: 'Home' },
@@ -15,6 +17,7 @@ const navLinks = [
 export default function Layout({ children, currentPageName }) {
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
+  const { cartItemsCount, setIsCartOpen } = useCart();
 
   React.useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -89,7 +92,19 @@ export default function Layout({ children, currentPageName }) {
               ))}
             </div>
 
-            <div className="hidden md:block">
+            <div className="hidden md:flex items-center gap-3">
+              <Button
+                onClick={() => setIsCartOpen(true)}
+                variant="outline"
+                className="relative rounded-full px-4 border-slate-200 hover:bg-slate-50"
+              >
+                <ShoppingCart className="w-4 h-4" />
+                {cartItemsCount > 0 && (
+                  <span className="absolute -top-2 -right-2 w-5 h-5 bg-[#F9A93A] text-white text-xs font-bold rounded-full flex items-center justify-center">
+                    {cartItemsCount}
+                  </span>
+                )}
+              </Button>
               <Button
                 asChild
                 className="bg-[#F9A93A] hover:bg-[#e89820] text-white rounded-full px-6 shadow-lg shadow-amber-900/20"
@@ -101,12 +116,26 @@ export default function Layout({ children, currentPageName }) {
               </Button>
             </div>
 
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-slate-700 hover:bg-slate-100 rounded-lg"
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
+            {/* Mobile cart button + menu */}
+            <div className="flex items-center gap-2 md:hidden">
+              <button
+                onClick={() => setIsCartOpen(true)}
+                className="relative p-2 text-slate-700 hover:bg-slate-100 rounded-lg"
+              >
+                <ShoppingCart className="w-6 h-6" />
+                {cartItemsCount > 0 && (
+                  <span className="absolute -top-1 -right-1 w-5 h-5 bg-[#F9A93A] text-white text-xs font-bold rounded-full flex items-center justify-center">
+                    {cartItemsCount}
+                  </span>
+                )}
+              </button>
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="p-2 text-slate-700 hover:bg-slate-100 rounded-lg"
+              >
+                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
           </nav>
         </div>
 
@@ -235,6 +264,9 @@ export default function Layout({ children, currentPageName }) {
           </div>
         </div>
       </footer>
+
+      {/* Cart Drawer */}
+      <CartDrawer />
     </div>
   );
 }

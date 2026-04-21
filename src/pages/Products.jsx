@@ -1,9 +1,8 @@
 import React from 'react';
-import { useQuery } from '@tanstack/react-query';
 import { motion } from 'framer-motion';
 import ProductCard from '@/components/products/ProductCard';
 import { Button } from '@/components/ui/button';
-import { Loader2, ShoppingBag, ExternalLink, Leaf, Shield, Clock } from 'lucide-react';
+import { Loader2, ShoppingBag, Leaf, Shield, Clock } from 'lucide-react';
 import productsData from '@/data/products.json';
 
 export default function Products() {
@@ -97,55 +96,7 @@ export default function Products() {
                     ) : (
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 max-w-7xl mx-auto">
                             {products.map((product, index) => (
-                                <motion.div
-                                    key={product.id}
-                                    initial={{ opacity: 0, y: 30 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{ delay: index * 0.05 }}
-                                    className="group"
-                                >
-                                    {/* Product Image */}
-                                    <div className="aspect-square mb-6 overflow-hidden relative">
-                                        <motion.img
-                                            whileHover={{ scale: 1.05, rotate: -2 }}
-                                            transition={{ duration: 0.4 }}
-                                            src={product.image_url}
-                                            alt={product.name}
-                                            className="w-full h-full object-contain drop-shadow-xl"
-                                        />
-                                    </div>
-
-                                    {/* Product Info */}
-                                    <div className="space-y-4 text-center">
-                                        <div>
-                                            <h3 className="text-2xl font-bold text-slate-900 mb-2 group-hover:text-sky-700 transition-colors">
-                                                {product.name}
-                                            </h3>
-                                            {product.description && (
-                                                <p className="text-slate-600 leading-relaxed line-clamp-2">
-                                                    {product.description}
-                                                </p>
-                                            )}
-                                        </div>
-
-                                        <Button
-                                            asChild
-                                            variant="outline"
-                                            size="lg"
-                                            className="w-full border-2 border-slate-300 bg-white/80 backdrop-blur text-slate-700 hover:bg-slate-50 rounded-full px-6 py-7 text-lg shadow-lg"
-                                        >
-                                            <a
-                                                href={product.amazon_url}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                            >
-                                                Shop Now
-                                                <ExternalLink className="w-4 h-4 ml-2" />
-                                            </a>
-                                        </Button>
-                                    </div>
-                                </motion.div>
+                                <ProductCard key={product.id} product={product} index={index} />
                             ))}
                         </div>
                     )}

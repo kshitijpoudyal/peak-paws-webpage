@@ -1,0 +1,21 @@
+{
+  "name": "Peak Paws - Himalayan Yak Chews",
+  "short_name": "Peak Paws",
+  "description": "Premium yak cheese chews handcrafted in Nepal",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0ea5e9",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

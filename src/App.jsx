@@ -2,6 +2,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { pagesConfig } from './pages.config'
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
+import { CartProvider } from './context/CartContext';
 
 const { Pages, Layout, mainPage } = pagesConfig;
 const mainPageKey = mainPage ?? Object.keys(Pages)[0];
@@ -39,10 +40,12 @@ const AppRoutes = () => {
 
 function App() {
   return (
-    <Router>
-      <AppRoutes />
-      <Toaster />
-    </Router>
+    <CartProvider>
+      <Router>
+        <AppRoutes />
+        <Toaster />
+      </Router>
+    </CartProvider>
   )
 }
 
