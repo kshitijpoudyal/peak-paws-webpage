@@ -109,7 +109,7 @@ export default function Layout({ children, currentPageName }) {
                 asChild
                 className="bg-[#F9A93A] hover:bg-[#e89820] text-white rounded-full px-6 shadow-lg shadow-amber-900/20"
               >
-                <a href="https://amazon.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.amazon.com/dp/B0GSS76KKG" target="_blank" rel="noopener noreferrer">
                   <ShoppingBag className="w-4 h-4 mr-2" />
                   Shop Now
                 </a>
@@ -178,7 +178,7 @@ export default function Layout({ children, currentPageName }) {
                   asChild
                   className="w-full bg-[#F9A93A] hover:bg-[#e89820] text-white rounded-full mt-4"
                 >
-                  <a href="https://amazon.com" target="_blank" rel="noopener noreferrer">
+                  <a href="https://www.amazon.com/dp/B0GSS76KKG" target="_blank" rel="noopener noreferrer">
                     <ShoppingBag className="w-4 h-4 mr-2" />
                     Shop Now
                   </a>
