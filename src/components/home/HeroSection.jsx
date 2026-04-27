@@ -102,7 +102,7 @@ export default function HeroSection() {
                 size="lg"
                 className="bg-[#F9A93A] hover:bg-[#e89820] text-white rounded-full px-10 py-7 text-lg shadow-2xl shadow-amber-900/30 group"
               >
-                <a href="https://amazon.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.amazon.com/dp/B0GSS76KKG" target="_blank" rel="noopener noreferrer">
                   <ShoppingBag className="w-5 h-5 mr-2 group-hover:rotate-12 transition-transform" />
                   Shop on Amazon
                 </a>

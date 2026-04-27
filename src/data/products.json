@@ -4,7 +4,7 @@
     "name": "Small Size Yak Chew",
     "description": "Perfect for small dogs up to 15 lbs.",
     "image_url": "/products/small.png",
-    "price": 14.99,
+    "price": 16.99,
     "stripe_price_id": "price_small_yak_chew",
     "amazon_url": "https://a.co/d/08ZyFCoC"
   },
@@ -13,7 +13,7 @@
     "name": "Medium Size Yak Chew",
     "description": "Ideal for medium dogs 15-55 lbs.",
     "image_url": "/products/medium.png",
-    "price": 19.99,
+    "price": 21.99,
     "stripe_price_id": "price_medium_yak_chew",
     "amazon_url": "https://a.co/d/042aBiMl"
   },
@@ -22,7 +22,7 @@
     "name": "Large Size Yak Chew",
     "description": "Great for large dogs 55+ lbs.",
     "image_url": "/products/large.png",
-    "price": 24.99,
+    "price": 32.99,
     "stripe_price_id": "price_large_yak_chew",
     "amazon_url": "https://a.co/d/08Ulp5zX"
   }
